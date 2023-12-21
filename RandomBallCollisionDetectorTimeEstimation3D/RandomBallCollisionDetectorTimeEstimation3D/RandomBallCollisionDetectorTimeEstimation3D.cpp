@@ -197,7 +197,7 @@ public:
     void MapPoints() {
         ofstream fout;
         fout.open(fileName, ios::out);
-        fout << "K,minimum N";
+        fout << "K,minimum N,Time";
         for (int k = Klow; k <= Khigh; k += Kstep) {
             cout << k << endl;
             for (int i = 0; i < runs; i++) {
@@ -208,7 +208,7 @@ public:
                         mintimeStep = { n, timeStep };
                     }
                 }
-                fout << "\n" << k << "," << mintimeStep.first;
+                fout << "\n" << k << "," << mintimeStep.first << "," << mintimeStep.second;
             }
         }
         fout.close();
@@ -218,14 +218,14 @@ public:
 
 // Made grid, now continue with creating many grids and then running the simulation :)
 
-const int Nlow = 2, Nhigh = 15, Nstep = 1;
-const int Klow = 20, Khigh = 400, Kstep = 10;
+const int Nlow = 3, Nhigh = 15, Nstep = 1;
+const int Klow = 20, Khigh = 1000, Kstep = 20;
 const PrecType radius = 0.13;
-const int runs = 1000;
-const int samplesPerRun = 200;
+const int runs = 2000;
+const int samplesPerRun = 20;
 int main()
 {
-    //TesterRun T(Nlow, Nhigh, Nstep, Klow, Khigh, Kstep, runs, samplesPerRun, radius, "Data.csv");
+    TesterRun(Nlow, Nhigh, Nstep, Klow, Khigh, Kstep, runs, samplesPerRun, radius, "Data.csv").Run();
     TesterRun T(2, 10, 1, 
         40, 500, 10, 
         5, 250, 
