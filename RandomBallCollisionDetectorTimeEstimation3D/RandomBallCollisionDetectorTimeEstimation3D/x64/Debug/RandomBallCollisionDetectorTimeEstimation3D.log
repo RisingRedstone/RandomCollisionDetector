@@ -1,0 +1,9 @@
+﻿  RandomBallCollisionDetectorTimeEstimation3D.cpp
+D:\Progress\Projects\RandomBallCollisionDetector\RandomBallCollisionDetectorTimeEstimation3D\RandomBallCollisionDetectorTimeEstimation3D\RandomBallCollisionDetectorTimeEstimation3D.cpp(30,22): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\Progress\Projects\RandomBallCollisionDetector\RandomBallCollisionDetectorTimeEstimation3D\RandomBallCollisionDetectorTimeEstimation3D\RandomBallCollisionDetectorTimeEstimation3D.cpp(22,18): message : see reference to function template instantiation 'std::ostream &operator <<<Ball>(std::ostream &,std::vector<Ball,std::allocator<Ball>>)' being compiled
+D:\Progress\Projects\RandomBallCollisionDetector\RandomBallCollisionDetectorTimeEstimation3D\RandomBallCollisionDetectorTimeEstimation3D\RandomBallCollisionDetectorTimeEstimation3D.cpp(123,5): message : see reference to function template instantiation 'void listify<std::vector<Ball,std::allocator<Ball>>*>(T,int)' being compiled
+          with
+          [
+              T=std::vector<Ball,std::allocator<Ball>> *
+          ]
+  RandomBallCollisionDetectorTimeEstimation3D.vcxproj -> D:\Progress\Projects\RandomBallCollisionDetector\RandomBallCollisionDetectorTimeEstimation3D\x64\Debug\RandomBallCollisionDetectorTimeEstimation3D.exe
