@@ -213,6 +213,35 @@ public:
         }
         fout.close();
     }
+
+    int NValue(int K) {
+        double ratio = 0.14159534724294387;
+        double Ktemp = (double)(K * (K-1));
+        return int(pow(128 * ratio * Ktemp, ((double)1/(double)6)) + 0.5);
+    }
+
+    double PredictedTimeValue(int K) {
+        double mult = 0.00020301698495638938 * 2.8746260481115466e-05;
+        double Ktemp = (double)(K * (K - 1));
+        return sqrt(128 * Ktemp * mult);
+    }
+
+    void MapPointsBasedOnPred() {
+        ofstream fout;
+        fout.open(fileName, ios::out);
+        fout << "K,Time,Predicted Time";
+        for (int k = Klow; k <= Khigh; k += Kstep) {
+            int N = NValue(k);
+            cout << k << "\t" << N << endl;
+            double timeStep;
+            double timePred = PredictedTimeValue(k);
+            for (int i = 0; i < runs; i++) {
+                timeStep = GridSamples(N, k, radius, samplesPerRun).timeTestedRun();
+                fout << "\n" << k << "," << timeStep << "," << timePred;
+            }
+        }
+        fout.close();
+    }
 };
 
 
@@ -225,12 +254,13 @@ const int runs = 2000;
 const int samplesPerRun = 20;
 int main()
 {
-    TesterRun(Nlow, Nhigh, Nstep, Klow, Khigh, Kstep, runs, samplesPerRun, radius, "Data.csv").Run();
+    //TesterRun(Nlow, Nhigh, Nstep, Klow, Khigh, Kstep, runs, samplesPerRun, radius, "Data.csv").Run();
     TesterRun T(2, 10, 1, 
         40, 500, 10, 
         5, 250, 
-        0.13, "MinData.csv");
+        0.13, "MinTimeData.csv");
     T.MapPoints();
+    //T.MapPointsBasedOnPred();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
